@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tab switch</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .clearfix:after {
+            content: " ";
+            display: block;
+            clear: both;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 600px;
+        }
+
+        .container {
+            background-color: #eee;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .container li {
+            float: left;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+            padding: 3px 0;
+        }
+
+        .panel {
+            width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 30px 0;
+            display: none;
+        }
+
+        .active {
+            background-color: #fadecd;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="container clearfix">
+        <li>tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+    <div class="panel active">content1</div>
+    <div class="panel">content2</div>
+    <div class="panel">content3</div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
+    <script>
+        $(".container li").on("click", function () {
+            var $this = $(this);
+            var ind = $this.index();
+            $this.addClass("active").siblings().removeClass("active");
+            $(".panel").eq(ind).addClass("active").siblings().removeClass("active");
+        })
+    </script>
+</body>
+
+</html>
